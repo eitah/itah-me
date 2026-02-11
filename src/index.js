@@ -33,8 +33,7 @@ export default {
 
         if (!res.ok) {
           const err = await res.text();
-          console.error("Resend error:", err);
-          return new Response(JSON.stringify({ error: "Failed to send message." }), {
+          return new Response(JSON.stringify({ error: `Resend: ${err}` }), {
             status: 500,
             headers: { "Content-Type": "application/json" },
           });
@@ -44,8 +43,7 @@ export default {
           headers: { "Content-Type": "application/json" },
         });
       } catch (e) {
-        console.error("Contact error:", e);
-        return new Response(JSON.stringify({ error: "Something went wrong." }), {
+        return new Response(JSON.stringify({ error: `Worker error: ${e.message}` }), {
           status: 500,
           headers: { "Content-Type": "application/json" },
         });
