@@ -1,5 +1,57 @@
 export default {
-  async fetch() {
+  async fetch(request, env) {
+    const url = new URL(request.url);
+
+    if (request.method === "POST" && url.pathname === "/contact") {
+      try {
+        const formData = await request.formData();
+        const name = formData.get("name") || "";
+        const email = formData.get("email") || "";
+        const message = formData.get("message") || "";
+
+        if (!name || !email || !message) {
+          return new Response(JSON.stringify({ error: "All fields are required." }), {
+            status: 400,
+            headers: { "Content-Type": "application/json" },
+          });
+        }
+
+        const res = await fetch("https://api.resend.com/emails", {
+          method: "POST",
+          headers: {
+            "Authorization": `Bearer ${env.RESEND_API_KEY}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            from: "Contact Form <onboarding@resend.dev>",
+            to: "elijahbit@gmail.com",
+            subject: `Message from ${name}`,
+            text: `From: ${name} <${email}>\n\n${message}`,
+            reply_to: email,
+          }),
+        });
+
+        if (!res.ok) {
+          const err = await res.text();
+          console.error("Resend error:", err);
+          return new Response(JSON.stringify({ error: "Failed to send message." }), {
+            status: 500,
+            headers: { "Content-Type": "application/json" },
+          });
+        }
+
+        return new Response(JSON.stringify({ ok: true }), {
+          headers: { "Content-Type": "application/json" },
+        });
+      } catch (e) {
+        console.error("Contact error:", e);
+        return new Response(JSON.stringify({ error: "Something went wrong." }), {
+          status: 500,
+          headers: { "Content-Type": "application/json" },
+        });
+      }
+    }
+
     const html = `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -125,6 +177,15 @@ export default {
       align-self: flex-start;
     }
     button:hover { background: #3a8eef; }
+    button:disabled { background: #555; cursor: not-allowed; }
+    .form-status {
+      padding: 10px 12px;
+      border-radius: 4px;
+      font-size: 0.9rem;
+      display: none;
+    }
+    .form-status.success { display: block; background: #0a2a0a; border: 1px solid #1a4a1a; color: #4caf50; }
+    .form-status.error { display: block; background: #2a0a0a; border: 1px solid #4a1a1a; color: #f44336; }
 
     /* Footer */
     footer {
@@ -251,16 +312,35 @@ export default {
         <input type="email" name="email" placeholder="Your email" required>
         <textarea name="message" placeholder="Your message" required></textarea>
         <button type="submit">Send</button>
+        <div id="form-status" class="form-status"></div>
       </form>
       <script>
-        document.getElementById("contact-form").addEventListener("submit", function(e) {
+        document.getElementById("contact-form").addEventListener("submit", async function(e) {
           e.preventDefault();
-          const name = this.name.value;
-          const email = this.email.value;
-          const message = this.message.value;
-          const subject = encodeURIComponent("Message from " + name);
-          const body = encodeURIComponent("From: " + name + " <" + email + ">\\n\\n" + message);
-          window.location.href = "mailto:elijahbit@gmail.com?subject=" + subject + "&body=" + body;
+          const btn = this.querySelector("button");
+          const status = document.getElementById("form-status");
+          btn.disabled = true;
+          btn.textContent = "Sending...";
+          status.className = "form-status";
+          status.style.display = "none";
+
+          try {
+            const res = await fetch("/contact", { method: "POST", body: new FormData(this) });
+            const data = await res.json();
+            if (res.ok) {
+              status.textContent = "Message sent. Thanks!";
+              status.className = "form-status success";
+              this.reset();
+            } else {
+              status.textContent = data.error || "Failed to send.";
+              status.className = "form-status error";
+            }
+          } catch {
+            status.textContent = "Something went wrong.";
+            status.className = "form-status error";
+          }
+          btn.disabled = false;
+          btn.textContent = "Send";
         });
       </script>
     </section>
