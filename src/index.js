@@ -24,7 +24,7 @@ export default {
           },
           body: JSON.stringify({
             from: "Contact Form <onboarding@resend.dev>",
-            to: "elijahbit@gmail.com",
+            to: "elijahbit+resend@gmail.com",
             subject: `Message from ${name}`,
             text: `From: ${name} <${email}>\n\n${message}`,
             reply_to: email,
