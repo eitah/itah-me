@@ -1,23 +1,11 @@
 export default {
-  async fetch(request) {
-    const url = new URL(request.url);
-
-    if (request.method === "POST" && url.pathname === "/contact") {
-      const formData = await request.formData();
-      const name = formData.get("name") || "";
-      const email = formData.get("email") || "";
-      const message = formData.get("message") || "";
-      const subject = encodeURIComponent(`Message from ${name}`);
-      const body = encodeURIComponent(`From: ${name} <${email}>\n\n${message}`);
-      return Response.redirect(`mailto:elijahbit@gmail.com?subject=${subject}&body=${body}`, 302);
-    }
-
+  async fetch() {
     const html = `<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Elijah Itah</title>
+  <title>Eli Itah</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -50,8 +38,14 @@ export default {
       gap: 24px;
     }
     .links a {
-      color: #4a9eff;
+      color: #fff;
       font-weight: 500;
+      border-bottom: 1px solid #555;
+      padding-bottom: 2px;
+    }
+    .links a:hover {
+      border-bottom-color: #fff;
+      text-decoration: none;
     }
 
     /* Sections */
@@ -144,12 +138,12 @@ export default {
 <body>
   <div class="container">
     <header>
-      <h1>Elijah Itah</h1>
+      <h1>Eli Itah</h1>
       <p class="tagline">Software &amp; Cloud Systems Engineer &middot; Chicago, IL</p>
       <div class="links">
         <a href="https://github.com/eitah">GitHub</a>
         <a href="https://www.linkedin.com/in/elijahbit/">LinkedIn</a>
-        <a href="mailto:elijahbit@gmail.com">Email</a>
+        <a href="#contact">Email</a>
       </div>
     </header>
 
@@ -249,7 +243,7 @@ export default {
       <p><strong>B.A., Biology</strong> &mdash; Reed College, Portland, OR, 2005</p>
     </section>
 
-    <section>
+    <section id="contact">
       <h2>Contact</h2>
       <p style="margin-bottom: 16px;">Send me a message and I'll get back to you.</p>
       <form id="contact-form">
@@ -273,7 +267,7 @@ export default {
   </div>
 
   <footer>
-    <div class="container">&copy; ${new Date().getFullYear()} Elijah Itah</div>
+    <div class="container">&copy; ${new Date().getFullYear()} Eli Itah</div>
   </footer>
 </body>
 </html>`;
