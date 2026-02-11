@@ -139,8 +139,8 @@ export default {
         <h3>App Dev / Systems Analyst &mdash; Billing &amp; Payments</h3>
         <div class="meta">Allstate Insurance &middot; Nov 2012 &ndash; Jun 2016</div>
         <ul>
-          <li>Led development of enterprise payment and billing systems under PCI and SOX compliance</li>
-          <li>Built and scaled a globally distributed engineering team of 10 across three continents</li>
+          <li>Contributed to development of enterprise payment and billing systems under PCI and SOX compliance</li>
+          <li>Routinely collaborated with a distributed engineering team of 10 across three continents</li>
           <li>Automated database operations, saving 30&ndash;40 hours per month</li>
         </ul>
       </div>
