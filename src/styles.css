@@ -1,0 +1,135 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  background: #000;
+  color: #fff;
+  line-height: 1.6;
+}
+
+a { color: #4a9eff; text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.container { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+
+/* Header */
+header {
+  padding: 80px 0 40px;
+  border-bottom: 1px solid #222;
+}
+header h1 { font-size: 2.5rem; font-weight: 700; letter-spacing: -0.5px; }
+header p.tagline {
+  margin-top: 12px;
+  font-size: 1.1rem;
+  color: #aaa;
+}
+.links {
+  margin-top: 20px;
+  display: flex;
+  gap: 24px;
+}
+.links a {
+  color: #fff;
+  font-weight: 500;
+  border-bottom: 1px solid #555;
+  padding-bottom: 2px;
+}
+.links a:hover {
+  border-bottom-color: #fff;
+  text-decoration: none;
+}
+
+/* Sections */
+section {
+  padding: 48px 0;
+  border-bottom: 1px solid #222;
+}
+section:last-of-type { border-bottom: none; }
+section h2 {
+  font-size: 1.25rem;
+  color: #4a9eff;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+section p { color: #ccc; margin-bottom: 12px; }
+
+/* Experience */
+.role { margin-bottom: 28px; }
+.role h3 { font-size: 1rem; font-weight: 600; color: #fff; }
+.role .meta { font-size: 0.875rem; color: #888; margin: 4px 0 8px; }
+.role ul { list-style: none; padding: 0; }
+.role li {
+  color: #ccc;
+  font-size: 0.925rem;
+  padding-left: 16px;
+  position: relative;
+  margin-bottom: 6px;
+}
+.role li::before {
+  content: "\2013";
+  position: absolute;
+  left: 0;
+  color: #555;
+}
+
+/* Skills */
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.skills span {
+  background: #111;
+  border: 1px solid #333;
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  color: #ccc;
+}
+
+/* Contact form */
+form { display: flex; flex-direction: column; gap: 12px; max-width: 480px; }
+input, textarea {
+  background: #111;
+  border: 1px solid #333;
+  color: #fff;
+  padding: 10px 12px;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 0.95rem;
+}
+input:focus, textarea:focus {
+  outline: none;
+  border-color: #4a9eff;
+}
+textarea { resize: vertical; min-height: 120px; }
+button {
+  background: #4a9eff;
+  color: #000;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 4px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  align-self: flex-start;
+}
+button:hover { background: #3a8eef; }
+button:disabled { background: #555; cursor: not-allowed; }
+.form-status {
+  padding: 10px 12px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  display: none;
+}
+.form-status.success { display: block; background: #0a2a0a; border: 1px solid #1a4a1a; color: #4caf50; }
+.form-status.error { display: block; background: #2a0a0a; border: 1px solid #4a1a1a; color: #f44336; }
+
+/* Footer */
+footer {
+  padding: 32px 0;
+  text-align: center;
+  color: #555;
+  font-size: 0.8rem;
+}
