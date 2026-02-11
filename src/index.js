@@ -31,7 +31,7 @@ export default {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            from: "Itah.me website contact form <onboarding@resend.dev>",
+            from: "Itah.me website <contact@contact.itah.me>",
             to: "elijahbit+resend@gmail.com",
             subject: `Itah.me website contact form: Message from ${name}`,
             text: `From: ${name} <${email}>\n\n${message}`,
@@ -178,7 +178,7 @@ export default {
     </section>
 
     <section id="contact">
-      <h2>Contact</h2>
+      <h2>Email Contact</h2>
       <p style="margin-bottom: 16px;">Send me a message and I'll get back to you.</p>
       <form id="contact-form">
         <input type="text" name="name" placeholder="Your name" required>
