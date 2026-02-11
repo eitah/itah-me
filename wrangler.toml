@@ -3,5 +3,6 @@ main = "src/index.js"
 compatibility_date = "2025-01-01"
 
 routes = [
-  { pattern = "itah.me", custom_domain = true }
+  { pattern = "itah.me", custom_domain = true },
+  { pattern = "www.itah.me", custom_domain = true }
 ]
