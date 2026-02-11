@@ -6,3 +6,6 @@ routes = [
   { pattern = "itah.me", custom_domain = true },
   { pattern = "www.itah.me", custom_domain = true }
 ]
+[[rules]]
+type = "Text"
+globs = ["**/*.css"]
