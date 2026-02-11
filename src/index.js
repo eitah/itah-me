@@ -320,15 +320,15 @@ export default {
           btn.disabled = true;
           btn.textContent = "Sending...";
           status.className = "form-status";
-          status.style.display = "none";
+          status.textContent = "";
 
           try {
             const res = await fetch("/contact", { method: "POST", body: new FormData(this) });
             const data = await res.json();
             if (res.ok) {
+              this.reset();
               status.textContent = "Message sent. Thanks!";
               status.className = "form-status success";
-              this.reset();
             } else {
               status.textContent = data.error || "Failed to send.";
               status.className = "form-status error";
