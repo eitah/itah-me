@@ -81,10 +81,9 @@ export default {
     <section>
       <h2>About</h2>
       <p>
-        Six years as a cloud systems engineer, four years as a full-stack engineer, and six years
-        as a software engineer with formal training in Golang, Node, React, AngularJS, Python, and
-        Java Spring. Twenty years of business experience spanning tech, insurance, biomedical, and
-        higher education.
+        Software and cloud systems engineer with 16 years of hands-on engineering experience
+        across the full stack: from Kubernetes and Terraform to React and Golang.
+        Twenty years in the tech industry spanning insurance, finance, biomedical, and transportation.
       </p>
       <p>
         I deliver solutions with panache&mdash;finding simple workarounds to complex problems.
@@ -99,7 +98,10 @@ export default {
         <h3>Senior Systems Engineer</h3>
         <div class="meta">Spantree Technology Group &middot; Feb 2024 &ndash; Present</div>
         <ul>
-          <li>AWS Cloud and Postgres infrastructure for client engagements</li>
+        <li>Built and maintained GCP and AWS Cloud and Postgres infrastructure for clients in transportation and health care</li>
+        <li>Migrated Dagster pipelines to streaming architecture from a batch model, reducing processing latency by 50%</li>
+        <li>Co-authored AI Fluency Course for a technical audience, including prompt engineering and subagent architecture</li>
+        <li>Mentored junior engineers through first Postgres, GoLang and Terraform commits</li>
         </ul>
       </div>
 
@@ -107,10 +109,11 @@ export default {
         <h3>Systems Engineer &mdash; GCP / Terraform / Kubernetes</h3>
         <div class="meta">Spantree Technology Group &middot; Apr 2019 &ndash; Apr 2023</div>
         <ul>
-          <li>Golang, Terraform, and Kubernetes for clients in transportation, health care, and finance</li>
-          <li>Orchestrated legacy batch architecture (Dagster) into a streaming model, increasing performance</li>
-          <li>Built a custom Kubernetes operator for permissions management during a GCP migration</li>
-          <li>Mentored junior engineers through first GoLang and Terraform commits</li>
+          <li>Golang, Terraform, and Kubernetes for clients in health care and finance</li>
+          <li>Instantiated and maintained a client-hosted Github Actions Runner to enable GPU-accelerated CI/CD pipelines for a client in the health care industry</li>
+          <li>Built a custom Kubernetes operator in GoLang for permissions management across GCP Accounts. The highly privileged agent performed AI management tasks related to PubSub, ensuring IAM Permissions were accurately and securely managed.</li>
+          <li>Wrote plugins for an in-house developed self-service Kubernetes password manager, enabling technical users to set and manage their own passwords securely and easily. This imrpoved provisioning time for new infrastructure (databases, microservices, SaaS Integrations) from a few weeks to a few hours.</li>
+          <li>Routinely paired with other technical users to troubleshoot issues and improve the overall developer experience.</li>
         </ul>
       </div>
 
@@ -118,7 +121,7 @@ export default {
         <h3>Associate Front End Developer &mdash; Homepage</h3>
         <div class="meta">Cars.com &middot; Feb 2017 &ndash; Feb 2019</div>
         <ul>
-          <li>Angular 1.0 and Node.js on mission-critical features: homepage, profiles, comparison API</li>
+          <li>Angular 1.0, React, and Node.js on mission-critical features: homepage, profiles, comparison API</li>
           <li>Mentored junior developers through paired programming and code reviews</li>
         </ul>
       </div>
@@ -136,8 +139,8 @@ export default {
         <h3>App Dev / Systems Analyst &mdash; Billing &amp; Payments</h3>
         <div class="meta">Allstate Insurance &middot; Nov 2012 &ndash; Jun 2016</div>
         <ul>
-          <li>Led development of enterprise payment and billing systems under PCI and SOX compliance</li>
-          <li>Built and scaled a globally distributed engineering team of 10 across three continents</li>
+          <li>Contributed to development of enterprise payment and billing systems under PCI and SOX compliance</li>
+          <li>Routinely collaborated with a distributed engineering team of 10 across three continents</li>
           <li>Automated database operations, saving 30&ndash;40 hours per month</li>
         </ul>
       </div>
@@ -175,7 +178,7 @@ export default {
     </section>
 
     <section id="contact">
-      <h2>Contact</h2>
+      <h2>Email Contact</h2>
       <p style="margin-bottom: 16px;">Send me a message and I'll get back to you.</p>
       <form id="contact-form">
         <input type="text" name="name" placeholder="Your name" required>
