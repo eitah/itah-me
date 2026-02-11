@@ -1,3 +1,7 @@
 name = "itah-me"
 main = "src/index.js"
 compatibility_date = "2025-01-01"
+
+routes = [
+  { pattern = "itah.me", custom_domain = true }
+]
