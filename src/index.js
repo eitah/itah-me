@@ -31,7 +31,7 @@ export default {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            from: "Itah.me website contact form <onboarding@resend.dev>",
+            from: "Itah.me website <contact@itah.me>",
             to: "elijahbit+resend@gmail.com",
             subject: `Itah.me website contact form: Message from ${name}`,
             text: `From: ${name} <${email}>\n\n${message}`,
