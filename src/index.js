@@ -24,7 +24,7 @@ export default {
           },
           body: JSON.stringify({
             from: "Contact Form <onboarding@resend.dev>",
-            to: "elijahbit@gmail.com",
+            to: "elijahbit+resend@gmail.com",
             subject: `Message from ${name}`,
             text: `From: ${name} <${email}>\n\n${message}`,
             reply_to: email,
@@ -33,8 +33,7 @@ export default {
 
         if (!res.ok) {
           const err = await res.text();
-          console.error("Resend error:", err);
-          return new Response(JSON.stringify({ error: "Failed to send message." }), {
+          return new Response(JSON.stringify({ error: `Resend: ${err}` }), {
             status: 500,
             headers: { "Content-Type": "application/json" },
           });
@@ -44,8 +43,7 @@ export default {
           headers: { "Content-Type": "application/json" },
         });
       } catch (e) {
-        console.error("Contact error:", e);
-        return new Response(JSON.stringify({ error: "Something went wrong." }), {
+        return new Response(JSON.stringify({ error: `Worker error: ${e.message}` }), {
           status: 500,
           headers: { "Content-Type": "application/json" },
         });
@@ -322,15 +320,15 @@ export default {
           btn.disabled = true;
           btn.textContent = "Sending...";
           status.className = "form-status";
-          status.style.display = "none";
+          status.textContent = "";
 
           try {
             const res = await fetch("/contact", { method: "POST", body: new FormData(this) });
             const data = await res.json();
             if (res.ok) {
+              this.reset();
               status.textContent = "Message sent. Thanks!";
               status.className = "form-status success";
-              this.reset();
             } else {
               status.textContent = data.error || "Failed to send.";
               status.className = "form-status error";
